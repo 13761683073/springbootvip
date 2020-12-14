@@ -9,6 +9,7 @@ pipeline {
                 }
             }
             steps {
+                sh '''cd $WORKSPACE
                 sh 'mvn clean install -Dmaven.test.skip=true'
             }
       }
