@@ -4,6 +4,7 @@ pipeline {
     stage('Build and publish docker image') {
       steps {
         sh '''cd $WORKSPACE
+        mvn clean install -Dmaven.test.skip=true
         docker build -t sprintbootvip:v$BUILD_NUMBER -f Dockerfile .
         docker stop sprintbootvip
         docker rm sprintbootvip
