@@ -16,9 +16,7 @@ pipeline {
       agent any
       steps {
         sh '''cd $WORKSPACE
-        
-        cp ./root/.m2/repository/enjoy/springbootvip/1.0-SNAPSHOT/springbootvip-1.0-SNAPSHOT.jar \\
-        ./var/jenkins_home/workspace/testDocker_master/target/springbootvip-1.0-SNAPSHOT.jar
+        mvn clean install -Dmaven.test.skip=true
         
         docker build -t sprintbootvip:v$BUILD_NUMBER -f Dockerfile .
         
