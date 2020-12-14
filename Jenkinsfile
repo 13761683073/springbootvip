@@ -7,6 +7,7 @@ pipeline {
   }
   stages {
     stage('Build and publish docker image') {
+      agent any
       steps {
         sh '''cd $WORKSPACE
         mvn clean install -Dmaven.test.skip=true
