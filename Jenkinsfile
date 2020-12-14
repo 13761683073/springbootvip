@@ -9,14 +9,13 @@ pipeline {
                 }
             }
             steps {
-                echo 'start'
+                sh 'mvn clean install -Dmaven.test.skip=true'
             }
       }
     stage('Build and publish docker image') {
       agent any
       steps {
         sh '''cd $WORKSPACE
-        mvn clean install -Dmaven.test.skip=true
         docker build -t sprintbootvip:v$BUILD_NUMBER -f Dockerfile .
         docker stop sprintbootvip
         docker rm sprintbootvip
