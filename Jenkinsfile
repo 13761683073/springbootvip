@@ -9,7 +9,7 @@ pipeline {
                 }
             }
             steps {
-                sh 'mvn clean install -Dmaven.test.skip=true'
+                echo 'start'
             }
       }
     stage('Build and publish docker image') {
